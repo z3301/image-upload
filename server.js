@@ -1,8 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const app = express();
-const port = 3000;
 
+// Enable CORS
+app.use(cors({
+    origin: [],
+    credentials: true, // enable set cookie
+  }));
+
+// Enable file upload limits
 app.use(
     fileUpload({
         limits: {
@@ -12,13 +19,15 @@ app.use(
     })
 );
 
-// serves index.html page
+// Serves index.html page
 app.use(express.static('public'));
 
+// Default route
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+// Upload route
 app.post('/upload', (req, res) => {
     // Get the file that was set to our field named "image"
     const { image } = req.files;
@@ -40,7 +49,8 @@ app.post('/upload', (req, res) => {
     res.sendStatus(200);
 });
 
-// Start the server
+// Start our server
+const port = process.env.PORT || 3009;
 app.listen(port, () => {
-    console.log(`App listening on port ${port}`);
-});
+  console.log(`Server listening on port ${port}`);
+});  
