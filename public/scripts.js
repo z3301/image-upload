@@ -1,7 +1,7 @@
 async function postImage() {
 
     // tier2 API endpoint
-    const tier2endpoint = new URL(`http://localhost:3000/upload`);
+    const tier2endpoint = new URL(`http://localhost:3002/upload`);
     // tier2endpoint.append('foo', '42'); // add query parameters if needed
 
     // get the file from the input element
@@ -29,9 +29,9 @@ async function postImage() {
     }
 
 
-    // read the response as JSON
-    const data = await response.json();
-    console.log(data);
+    // read the response as text
+    const data = await response.text();
+    console.log(response);
     // console.log(endpoint); // get the URL without query parameters
     // console.log(endpoint.toString()); // get the full URL
 } 
