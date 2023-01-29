@@ -1,13 +1,13 @@
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const app = express();
 
 // Enable CORS
-app.use(cors({
-    origin: [],
-    credentials: true, // enable set cookie
-  }));
+// app.use(cors({
+//     origin: [],
+//     credentials: true, // enable set cookie
+//   }));
 
 // Enable file upload limits
 app.use(
@@ -50,7 +50,7 @@ app.post('/upload', (req, res) => {
 });
 
 // Start our server
-const port = process.env.PORT || 3009;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });  
