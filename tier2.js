@@ -1,7 +1,8 @@
 // tier3 API endpoint (currently this is current directory)
-const tier3endpoint = 'http://localhost:3003/upload/';
+const tier3endpoint = new URL(`http://localhost:3003/upload/`);
 // tier3endpoint.append('foo', '42'); // add query parameters if needed
 
+// express variables
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const app = express();
@@ -36,7 +37,11 @@ app.post('/upload', (req, res) => {
     
     // Move the uploaded image to upload folder
     // This is where the API call to the tier3 service will be made
-    image.mv(tier3endpoint + image.name);
+        const res =  fetch(tier3endpoint, {
+        method: 'POST',
+        body: image.name
+        });
+
 
     // log it
     console.log(req.files);
@@ -48,5 +53,5 @@ app.post('/upload', (req, res) => {
 // Start our server
 const port = process.env.PORT || 3002;
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
+    console.log(`Server listening on port ${port}`);
 });  
