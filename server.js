@@ -1,9 +1,13 @@
+// tier3 API endpoint (currently this is current directory  )
+const tier3endpoint = '__dirname';
+// tier3endpoint.append('foo', '42'); // add query parameters if needed
+
 const express = require('express');
-// const cors = require('cors');
 const fileUpload = require('express-fileupload');
 const app = express();
 
 // Enable CORS
+// const cors = require('cors');
 // app.use(cors({
 //     origin: [],
 //     credentials: true, // enable set cookie
@@ -40,7 +44,8 @@ app.post('/upload', (req, res) => {
     
     // Move the uploaded image to upload folder
     // This is where the API call to the tier3 service will be made
-    image.mv(__dirname + '/upload/' + image.name);
+    
+    image.mv(tier3endpoint + '/upload/' + image.name);
 
     // log it
     console.log(req.files);

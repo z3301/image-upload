@@ -1,5 +1,9 @@
 async function postImage() {
 
+    // tier2 API endpoint
+    const tier2endpoint = new URL(`http://localhost:3000/upload`);
+    // tier2endpoint.append('foo', '42'); // add query parameters if needed
+
     // get the file from the input element
     const file = document.getElementsByName('image')[0].files[0];
     
@@ -9,14 +13,10 @@ async function postImage() {
         return;
     }
 
-    // API endpoint
-    const endpoint = new URL(`http://localhost:3000/upload`);
-    // endpoint.append('foo', '42'); // add query parameters if needed
-
     // create a FormData object
     const formData = new FormData();
     formData.append('image', file) //('image', file);
-    const response = await fetch(endpoint, {
+    const response = await fetch(tier2endpoint, {
         method: 'POST',
         body: formData
     });
