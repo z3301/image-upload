@@ -24,7 +24,7 @@ app.use(
 );
 
 // Serves index.html page
-app.use(express.static('index.html'));
+app.use(express.static('public'));
 
 // Default route
 // app.get('/', (req, res) => {
