@@ -24,12 +24,12 @@ app.use(
 );
 
 // Serves index.html page
-app.use(express.static('public'));
+app.use(express.static('index.html'));
 
 // Default route
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+// app.get('/', (req, res) => {
+//     res.send('Hello World!');
+// });
 
 // Upload route
 app.post('/upload', (req, res) => {
@@ -55,7 +55,7 @@ app.post('/upload', (req, res) => {
 });
 
 // Start our server
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });  
